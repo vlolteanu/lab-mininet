@@ -25,7 +25,7 @@ The following commands can be used from within the CLI:
  * `pingall` - makes all host pairs ping each other. This is a quick way of testing if your topology has connectivity across the board.
  * `link <node 1> <node 2> [up/down]` - enables/disables the link between two nodes
  * `intfs` - lists all interfaces by node
- * `exit` exits the CLI
+ * `exit` exits the CLI (`ctrl + D` also works)
 
 **TASK 1**: Run "sudo mn" to start the Mininet CLI; Mininet will create a default topology.
 
@@ -87,7 +87,12 @@ sudo mn --custom topo-2sw-2host.py --topo mytopo
 Fat Trees
 ---------
 
+![Fatter than a sumo wrestler](https://raw.githubusercontent.com/vlolteanu/lab-mininet/master/fat_tree.png)
 
-**TASK 4**: Use the provided script (fat-tree.py) to simulate a K=4 fat tree.
-
-
+**TASK 4**: Use the provided script (`fat-tree.py`) to simulate a K=4 fat tree with 10Mbps links. (Call `clean_topology.sh` followed by `mn -c` if anything goes wrong.)
+    
+ * Create a 4-to-4 iperf traffic pattern, where 4 hosts from one pod each source iperf traffic to a host from a different pod. (The target pod should be the same for all 4 destinations.)
+ * Start the flows one at a time and take note of how they perform after each one is added.
+ * Chances very high are that at least one pair of connections won't get 10Mbps. Why is that?
+ * There's a small, but non-trivial change that they will all achieve 10Mbps.
+    
